@@ -1,9 +1,9 @@
-package guru.springframework.spring5mvcrest;
+package guru.springframework;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"guru.springframework"})
 public class Spring5MvcRestApplication {
 
     public static void main(String[] args) {
