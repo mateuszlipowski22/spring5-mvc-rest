@@ -1,12 +1,8 @@
 package guru.springframework.services;
 
-import guru.springframework.api.v1.mapper.CategoryMapper;
 import guru.springframework.api.v1.mapper.CustomerMapper;
-import guru.springframework.api.v1.model.CategoryDTO;
 import guru.springframework.api.v1.model.CustomerDTO;
-import guru.springframework.domain.Category;
 import guru.springframework.domain.Customer;
-import guru.springframework.repository.CategoryRepository;
 import guru.springframework.repository.CustomerRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.when;
 
-class CustomerServiceTest {
+class CustomerServiceImplTest {
 
     public static final Long ID = 2L;
     public static final String FIRSTNAME = "Jimmy";
