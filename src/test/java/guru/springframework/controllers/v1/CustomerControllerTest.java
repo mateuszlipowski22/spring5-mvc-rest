@@ -1,9 +1,6 @@
 package guru.springframework.controllers.v1;
 
-import guru.springframework.api.v1.model.CategoryDTO;
 import guru.springframework.api.v1.model.CustomerDTO;
-import guru.springframework.domain.Customer;
-import guru.springframework.services.CategoryService;
 import guru.springframework.services.CustomerService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,10 +14,9 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import java.util.Arrays;
 import java.util.List;
 
-import static guru.springframework.controllers.v1.AbstractControllerTest.asJsonString;
+import static guru.springframework.controllers.v1.AbstractControllerTest.asJsonStringCustomer;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasSize;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -99,7 +95,7 @@ class CustomerControllerTest {
 
         mockMvc.perform(post(CustomerController.BASE_URL)
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(asJsonString(customerDTO)))
+                        .content(asJsonStringCustomer(customerDTO)))
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.firstname", equalTo(FIRSTNAME)))
                 .andExpect(jsonPath("$.customer_url", equalTo(CustomerController.BASE_URL+"1")));
@@ -121,7 +117,7 @@ class CustomerControllerTest {
 
         mockMvc.perform(put(CustomerController.BASE_URL+"1")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(asJsonString(customerDTO)))
+                        .content(asJsonStringCustomer(customerDTO)))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.firstname", equalTo(FIRSTNAME)))
                 .andExpect(jsonPath("$.lastname", equalTo(LASTNAME)))
@@ -143,7 +139,7 @@ class CustomerControllerTest {
 
         mockMvc.perform(patch(CustomerController.BASE_URL+"1")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(asJsonString(customerDTO)))
+                        .content(asJsonStringCustomer(customerDTO)))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.firstname", equalTo(FIRSTNAME)))
                 .andExpect(jsonPath("$.lastname", equalTo(LASTNAME)))
@@ -157,9 +153,5 @@ class CustomerControllerTest {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
         verify(customerService).deleteCustomerById(anyLong());
-
-
-
     }
-
 }

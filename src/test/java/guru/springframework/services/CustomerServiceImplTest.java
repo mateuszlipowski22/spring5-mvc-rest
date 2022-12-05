@@ -70,7 +70,6 @@ class CustomerServiceImplTest {
         assertEquals(FIRSTNAME, customerDTO.getFirstname());
         assertEquals(LASTNAME, customerDTO.getLastname());
 
-
     }
 
     @Test
@@ -111,7 +110,7 @@ class CustomerServiceImplTest {
         when(customerRepository.save(any(Customer.class))).thenReturn(customerSaved);
 
         //when
-        CustomerDTO savedDTO = customerService.saveCustomerByDTO(1l,customerDTO);
+        CustomerDTO savedDTO = customerService.saveCustomerByDTO(ID,customerDTO);
 
         //then
         assertEquals(customerDTO.getFirstname(), savedDTO.getFirstname());
